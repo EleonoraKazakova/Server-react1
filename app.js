@@ -12,11 +12,11 @@ app.use(function(req, res, next) {
     next();
   });
 
-app.use(express.static('/mnt/c/Users/Eleonora/Pictures/photo'));
+app.use(express.static('./photo'));
 
 
 app.get('/file/:city', (req, res) => {
-    const photos = fs.readdirSync(`/mnt/c/Users/Eleonora/Pictures/photo/${req.params.city}`)
+    const photos = fs.readdirSync(`./photo/${req.params.city}`)
     res.json({files: photos.map(photo => req.params.city + '/' + photo)})
 })
 
